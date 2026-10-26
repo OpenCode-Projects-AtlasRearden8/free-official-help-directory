@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A plain-English directory of officially free, never-sell-you-anything help: SSA, Medicare counselors, 211, IRS Free File and VITA, CFPB complaints, FTC fraud reporting, and your state Attorney General. Offline-friendly, no affiliate links, ever.">
+<meta name="author" content="Asdale Dynamics, LLC">
+<meta name="color-scheme" content="light dark">
+<title>Official Free Help Directory</title>
+<style>
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --ink: #1f2430;
+  --muted: #5b6472;
+  --line: #ddd8cd;
+  --accent: #1d6a4f;
+  --accent-ink: #ffffff;
+  --chip: #eef0e9;
+  --warn: #8a4b12;
+  --warn-bg: #fdf3e4;
+  --focus: #2b5db9;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171c;
+    --surface: #1d2128;
+    --ink: #e7e5df;
+    --muted: #a4abb6;
+    --line: #333a44;
+    --accent: #7cc9a7;
+    --accent-ink: #10261d;
+    --chip: #242b33;
+    --warn: #f0c078;
+    --warn-bg: #2c2313;
+    --focus: #8db4f2;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+header.site-head { padding: 36px 0 8px; }
+.masthead-kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 10px; }
+.intro { color: var(--muted); margin: 0 0 6px; max-width: 62ch; }
+.toc { font-size: 0.92rem; color: var(--muted); margin: 0 0 6px; }
+.toc strong { color: var(--ink); }
+
+.filters {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0 14px;
+  margin-top: 18px;
+}
+.search-row { display: flex; gap: 10px; flex-wrap: wrap; }
+#search {
+  flex: 1 1 260px;
+  font: inherit;
+  padding: 10px 14px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  min-width: 0;
+}
+#search:focus, .chip:focus-visible, a:focus-visible, .reset:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+.chip {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink);
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.reset {
+  font: inherit;
+  font-size: 0.86rem;
+  background: none;
+  border: none;
+  color: var(--focus);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px 2px;
+}
+#count { font-size: 0.9rem; color: var(--muted); margin: 10px 0 0; }
+
+#cards { padding: 8px 0 20px; }
+article.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 26px 18px;
+  margin: 22px 0;
+}
+article.card:target { outline: 3px solid var(--focus); outline-offset: 3px; }
+.card h2 { font-size: 1.28rem; line-height: 1.3; margin: 0 0 4px; }
+.tagline { color: var(--muted); margin: 0 0 12px; font-size: 1.02rem; }
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--chip);
+  color: var(--ink);
+}
+.badge.free { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.badge.warn { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
+.card .what { margin: 0 0 14px; }
+.card h3 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 18px 0 6px; }
+.card p { margin: 0 0 8px; }
+.card ul { margin: 0 0 8px; padding-left: 1.25rem; }
+.card li { margin: 4px 0; }
+ul.links { list-style: none; padding-left: 0; }
+ul.links li { margin: 6px 0; }
+ul.links a { font-weight: 600; }
+.phone { font-size: 0.95rem; margin: 0 0 14px; color: var(--muted); }
+.scams { border-left: 4px solid var(--warn); background: var(--warn-bg); border-radius: 0 10px 10px 0; padding: 12px 16px 6px; margin-top: 16px; }
+.scams h3 { color: var(--warn); margin-top: 0; }
+.scams ul { padding-left: 1.25rem; }
+.recheck { font-size: 0.88rem; color: var(--muted); margin: 16px 0 0; border-top: 1px dashed var(--line); padding-top: 10px; }
+.notes { font-size: 0.95rem; color: var(--muted); margin: 8px 0 0; }
+
+footer.site-foot {
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding: 22px 0 40px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+footer .fine { font-size: 0.82rem; margin: 6px 0 0; }
+
+@media (max-width: 560px) {
+  article.card { padding: 20px 18px 14px; }
+  h1 { font-size: 1.55rem; }
+}
+@media print {
+  .filters, footer.site-foot .fine:last-of-type { display: none; }
+  article.card { break-inside: avoid; border: 1px solid #bbb; }
+  body { background: #fff; color: #000; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+<header class="site-head wrap">
+  <p class="masthead-kicker">Free, official, never-sells-you-anything</p>
+  <h1>Official Free Help Directory</h1>
+  <p class="intro">A plain-English directory of services that are officially free, run by government or by trusted nonprofits, and never sell you anything. Every card tells you what it saves you, what it cannot do, what to have ready, and how to spot fake lookalike websites before you share personal details.</p>
+  <p class="toc">In here: <strong>7 official resources</strong> — no fees, no paid agents, no commissions, and <strong>no affiliate links, ever</strong>.</p>
+</header>
+
+<main class="wrap">
+  <nav class="filters" aria-label="Filter resources">
+    <div class="search-row">
+      <label for="search" style="position:absolute;left:-9999px;" id="search-label">Search</label>
+      <input id="search" type="search" placeholder="Search cards… (e.g. agency, goal, or what you need)" autocomplete="off" inputmode="search">
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filter by category">
+    <button type="button" class="chip" data-category="all" aria-pressed="true">All</button>
+    <button type="button" class="chip" data-category="benefits" aria-pressed="false">Benefits &amp; health coverage</button>
+    <button type="button" class="chip" data-category="taxes" aria-pressed="false">Taxes</button>
+    <button type="button" class="chip" data-category="consumer" aria-pressed="false">Consumer &amp; money issues</button>
+    <button type="button" class="chip" data-category="fraud" aria-pressed="false">Scams &amp; identity theft</button>
+    <button type="button" class="chip" data-category="local-help" aria-pressed="false">Local help &amp; referrals</button>
+    </div>
+    <button class="reset" id="clear" type="button">Show everything again</button>
+    <p id="count" aria-live="polite"></p>
+  </nav>
+
+  <section id="cards" aria-label="Resource cards">
+<article class="card" id="card-ssa-my-social-security" data-id="ssa-my-social-security" data-category="benefits" data-search="benefits &amp; health coverage social security (ssa) — official, always-free service file claims, replace cards, get benefit letters: no agent, no fee, ever. ssa.gov is the federal social security administration&#x27;s official site. with a free &#x27;my social security&#x27; account you can apply for retirement or disability benefits, request a replacement ssn card, download a benefit verification letter, and manage direct deposit yourself — the same work some private &#x27;agents&#x27; charge hundreds of dollars for. saves you from paid middlemen who charge $200–$1,000+ to do what ssa does for free: filing for retirement, medicare, or disability; replacing a lost card; and printing the benefit letter landlords and agencies ask for. a lawyer is never required just to apply. cannot guarantee approval — eligibility rules decide, not customer service. cannot speed up complex disability decisions beyond normal processing times. does not give legal advice; a difficult appeal may still be worth discussing with an independent attorney (ssa regulates attorney and non-attorney representative fees). some claims (for example certain survivor cases) still finish by phone or office appointment, not fully online. social security number — and your card, if you have it birth certificate or other proof of date of birth latest w-2, or last year&#x27;s tax return if self-employed bank routing and account number for direct deposit military records or marriage/divorce papers, if they apply to you never pay a &#x27;fee&#x27; to release social security benefits or to unfreeze your number. calls and texts demanding gift cards, wire transfers, or crypto are fake — hang up. lookalike sites like &#x27;ssa-gov.com&#x27;, &#x27;socialsecurity-now.com&#x27;, or &#x27;myssa-refund.net&#x27; are impostors. the real site is www.ssa.gov — type it yourself. 1-800-772-1213 (tty 1-800-325-0778), mon–fri free for everyone. some online services ask you to verify your identity when creating a my social security account.">
+  <h2>Social Security (SSA) — official, always-free service</h2>
+  <p class="tagline">File claims, replace cards, get benefit letters: no agent, no fee, ever.</p>
+  <div class="badges">
+    <span class="badge cat">Benefits &amp; health coverage</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">1-800-772-1213</span>
+  </div>
+  <p class="what">ssa.gov is the federal Social Security Administration&#x27;s official site. With a free &#x27;my Social Security&#x27; account you can apply for retirement or disability benefits, request a replacement SSN card, download a benefit verification letter, and manage direct deposit yourself — the same work some private &#x27;agents&#x27; charge hundreds of dollars for.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves you from paid middlemen who charge $200–$1,000+ to do what SSA does for free: filing for retirement, Medicare, or disability; replacing a lost card; and printing the benefit letter landlords and agencies ask for. A lawyer is never required just to apply.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Cannot guarantee approval — eligibility rules decide, not customer service.</li>
+    <li>Cannot speed up complex disability decisions beyond normal processing times.</li>
+    <li>Does not give legal advice; a difficult appeal may still be worth discussing with an independent attorney (SSA regulates attorney and non-attorney representative fees).</li>
+    <li>Some claims (for example certain survivor cases) still finish by phone or office appointment, not fully online.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>Social Security number — and your card, if you have it</li>
+    <li>Birth certificate or other proof of date of birth</li>
+    <li>Latest W-2, or last year&#x27;s tax return if self-employed</li>
+    <li>Bank routing and account number for direct deposit</li>
+    <li>Military records or marriage/divorce papers, if they apply to you</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://www.ssa.gov/apply" rel="noopener" data-host="www.ssa.gov">Apply for benefits (official SSA)</a> <small class="host-tag">(www.ssa.gov)</small></li>
+    <li><a href="https://www.ssa.gov/myaccount/" rel="noopener" data-host="www.ssa.gov">Create a free my Social Security account</a> <small class="host-tag">(www.ssa.gov)</small></li>
+  </ul></section>
+  <p class="phone">By phone: 1-800-772-1213 (TTY 1-800-325-0778), Mon–Fri</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>Never pay a &#x27;fee&#x27; to release Social Security benefits or to unfreeze your number. Calls and texts demanding gift cards, wire transfers, or crypto are fake — hang up. <em>Official:</em> <strong>ssa.gov</strong></li>
+    <li>Lookalike sites like &#x27;ssa-gov.com&#x27;, &#x27;socialsecurity-now.com&#x27;, or &#x27;myssa-refund.net&#x27; are impostors. The real site is www.ssa.gov — type it yourself. <em>Official:</em> <strong>ssa.gov</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Free for everyone. Some online services ask you to verify your identity when creating a my Social Security account.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2026-12-30.</p>
+</article>
+<article class="card" id="card-medicare-ship-counselors" data-id="medicare-ship-counselors" data-category="benefits" data-search="benefits &amp; health coverage medicare plan help — medicare.gov counselors &amp; ship free, unbiased state counseling before you pick or switch a medicare plan. medicare.gov is the official federal medicare site, and ship (state health insurance assistance program) is a national network of state-funded counselors. counselors compare plans with you one-on-one, review your drugs against plan formularies, explain bills, and coach you through enrollment — they sell nothing and take no commission. saves you $150–$500 a year in paid &#x27;medicare advisor&#x27; fees and the bigger cost of enrolling in a plan sold on commission. ship counselors are state-funded volunteers and staff who take no commission, so their plan comparison doesn&#x27;t lean toward anyone&#x27;s paycheck — including honest reviews of your medications each fall. cannot enroll you or file forms for you — they coach, you click the button. cannot sell plans or accept any commission (they are required to stay unbiased and unsold). does not provide legal advice for benefit denials or lawsuits. wait times spike during fall open enrollment (oct 15 – dec 7); appointments can run weeks behind. your medicare card (number is 11 letters and digits, your mbi) complete list of current medications with doses any plan papers, bills, or denial letters your zip code so the locator finds your state ship office official medicare never cold-calls to offer gift cards, groceries, or &#x27;free groceries with a new plan&#x27;. robocalls saying &#x27;switch now to keep benefits&#x27; are fake. lookalikes like &#x27;medicare-gov.info&#x27;, &#x27;medicare-plans-us.com&#x27;, or &#x27;ship-counselor.net&#x27; are impostors. official domains end in .gov — or are shiphelp.org for ship. 1-800-633-4227 (1-800-medicare), tty 1-800-325-0778 medicare.gov: everyone. ship: people with medicare and their families — free regardless of income. open enrollment runs oct 15 – dec 7 each year.">
+  <h2>Medicare plan help — Medicare.gov counselors &amp; SHIP</h2>
+  <p class="tagline">Free, unbiased state counseling before you pick or switch a Medicare plan.</p>
+  <div class="badges">
+    <span class="badge cat">Benefits &amp; health coverage</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">1-800-633-4227</span>
+  </div>
+  <p class="what">Medicare.gov is the official federal Medicare site, and SHIP (State Health Insurance Assistance Program) is a national network of state-funded counselors. Counselors compare plans with you one-on-one, review your drugs against plan formularies, explain bills, and coach you through enrollment — they sell nothing and take no commission.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves you $150–$500 a year in paid &#x27;Medicare advisor&#x27; fees and the bigger cost of enrolling in a plan sold on commission. SHIP counselors are state-funded volunteers and staff who take no commission, so their plan comparison doesn&#x27;t lean toward anyone&#x27;s paycheck — including honest reviews of your medications each fall.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Cannot enroll you or file forms for you — they coach, you click the button.</li>
+    <li>Cannot sell plans or accept any commission (they are required to stay unbiased and unsold).</li>
+    <li>Does not provide legal advice for benefit denials or lawsuits.</li>
+    <li>Wait times spike during fall open enrollment (Oct 15 – Dec 7); appointments can run weeks behind.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>Your Medicare card (number is 11 letters and digits, your MBI)</li>
+    <li>Complete list of current medications with doses</li>
+    <li>Any plan papers, bills, or denial letters</li>
+    <li>Your ZIP code so the locator finds your state SHIP office</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://www.medicare.gov/" rel="noopener" data-host="www.medicare.gov">Official Medicare site (Plan Compare, coverage basics)</a> <small class="host-tag">(www.medicare.gov)</small></li>
+    <li><a href="https://www.shiphelp.org/" rel="noopener" data-host="www.shiphelp.org">Find your state SHIP counselor (official directory)</a> <small class="host-tag">(www.shiphelp.org)</small></li>
+    <li><a href="https://eldercare.acl.gov/" rel="noopener" data-host="eldercare.acl.gov">Eldercare Locator — state SHIP phone numbers</a> <small class="host-tag">(eldercare.acl.gov)</small></li>
+  </ul></section>
+  <p class="phone">By phone: 1-800-633-4227 (1-800-MEDICARE), TTY 1-800-325-0778</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>Official Medicare never cold-calls to offer gift cards, groceries, or &#x27;free groceries with a new plan&#x27;. Robocalls saying &#x27;switch now to keep benefits&#x27; are fake. <em>Official:</em> <strong>medicare.gov</strong></li>
+    <li>Lookalikes like &#x27;medicare-gov.info&#x27;, &#x27;medicare-plans-us.com&#x27;, or &#x27;ship-counselor.net&#x27; are impostors. Official domains end in .gov — or are shiphelp.org for SHIP. <em>Official:</em> <strong>medicare.gov</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Medicare.gov: everyone. SHIP: people with Medicare and their families — free regardless of income. Open enrollment runs Oct 15 – Dec 7 each year.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2026-12-30.</p>
+</article>
+<article class="card" id="card-united-way-211" data-id="united-way-211" data-category="local-help" data-search="local help &amp; referrals 211 — free local help line (united way) one free call or text maps you to rent, food, utility, and care programs. 211 is a free, 24/7 help line in most u.s. states, powered by local united way and partner organizations. tell the specialist what you need — rent or utility help, food, transportation, child care, support for older adults or a disability — and they list the local programs that can help and how to apply. saves hours of searching for rent aid, food pantries, utility shut-off help, transportation, and home care — one call gives you a local, current list with eligibility rules instead of a maze of dead ends. cost: free, always. does not hand out money itself — it refers you to programs; screening is done by each program. coverage and quality vary by county; a few rural areas have limited 2-1-1 service. it is not 911 — it cannot send police, an ambulance, or stop an eviction in progress after hours. your zip code a one-sentence description of what you need today any deadline you already know (eviction notice date, shut-off notice date) real 211 never asks you to pay, give a gift card, or apply for a &#x27;federal grant&#x27; — calls and ads promising guaranteed grants for a fee are fake. scammers spoof short numbers and make sites like &#x27;211-benefits-grants.com&#x27;. the official site is 211.org (run by united way worldwide); verify the number before calling back. dial or text 2-1-1 (24/7 in most areas; some areas use a toll-free number) open to everyone; an automated option and interpreter services are available in many areas.">
+  <h2>211 — free local help line (United Way)</h2>
+  <p class="tagline">One free call or text maps you to rent, food, utility, and care programs.</p>
+  <div class="badges">
+    <span class="badge cat">Local help &amp; referrals</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">Dial or text 2-1-1</span>
+  </div>
+  <p class="what">211 is a free, 24/7 help line in most U.S. states, powered by local United Way and partner organizations. Tell the specialist what you need — rent or utility help, food, transportation, child care, support for older adults or a disability — and they list the local programs that can help and how to apply.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves hours of searching for rent aid, food pantries, utility shut-off help, transportation, and home care — one call gives you a local, current list with eligibility rules instead of a maze of dead ends. Cost: free, always.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Does not hand out money itself — it refers you to programs; screening is done by each program.</li>
+    <li>Coverage and quality vary by county; a few rural areas have limited 2-1-1 service.</li>
+    <li>It is not 911 — it cannot send police, an ambulance, or stop an eviction in progress after hours.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>Your ZIP code</li>
+    <li>A one-sentence description of what you need today</li>
+    <li>Any deadline you already know (eviction notice date, shut-off notice date)</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://www.211.org/" rel="noopener" data-host="www.211.org">211.org — find your local 211</a> <small class="host-tag">(www.211.org)</small></li>
+  </ul></section>
+  <p class="phone">By phone: Dial or text 2-1-1 (24/7 in most areas; some areas use a toll-free number)</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>Real 211 never asks you to pay, give a gift card, or apply for a &#x27;federal grant&#x27; — calls and ads promising guaranteed grants for a fee are fake. <em>Official:</em> <strong>211.org</strong></li>
+    <li>Scammers spoof short numbers and make sites like &#x27;211-benefits-grants.com&#x27;. The official site is 211.org (run by United Way Worldwide); verify the number before calling back. <em>Official:</em> <strong>211.org</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Open to everyone; an automated option and interpreter services are available in many areas.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2026-12-30.</p>
+</article>
+<article class="card" id="card-irs-free-file-vita" data-id="irs-free-file-vita" data-category="taxes" data-search="taxes irs free tax filing + vita volunteer preparers file federal taxes free with guided software or trained volunteers. irs free file offers two no-cost ways to file federal returns: partner-provided guided tax software (free if you meet the year&#x27;s income limits) and free file fillable forms (free electronic forms with no income limit, but no interview or advice). vita (volunteer income tax assistance) and tce add free, in-person returns prepared by irs-certified volunteers. saves $150–$600 in paid tax prep for simple returns, plus the delay and penalties that mistakes trigger. guided free file software is free if you meet the income limit, vita volunteers prepare and e-file for free in person, and refunds land faster when the return is accurate the first time. guided free file has annual income caps and its deals do not cover every state return — always confirm this year&#x27;s limit on irs.gov. fillable forms does no math for you and no state return. vita cannot prepare most complex returns (for example rental income or multi-state income) — check the site for the current list of in-scope forms. irs assistance is not legal advice, and it will not choose your best filing status for you over the phone. all w-2s and 1099s (wages, bank interest, retirement, unemployment) last year&#x27;s tax return (and prior-year agi if it was your first filing) social security or itin cards for everyone listed on the return bank routing and account numbers for a direct-deposit refund any 1095-a health form, 1098-t tuition form, or property tax statement, if they apply only irs.gov and irs.treasury.gov are official. sites like &#x27;irs-refunds.com&#x27;, &#x27;e-file-irs.net&#x27;, or &#x27;myirs-portal.net&#x27; are impostors — and the irs never emails or texts you about an unexpected refund. paid sites clone the name &#x27;free file&#x27;. the real program is only reached from irs.gov/freefile — if a site charges an &#x27;e-file service fee&#x27; for guided free file, leave and start over from irs.gov. 1-800-829-1040 (irs individual line — expect hold time) guided free file: free if your income is at or under the year&#x27;s cap published at irs.gov. fillable forms: any income. vita: generally modest income, persons with disabilities, and limited-english speakers. january marks the start of each filing season.">
+  <h2>IRS free tax filing + VITA volunteer preparers</h2>
+  <p class="tagline">File federal taxes free with guided software or trained volunteers.</p>
+  <div class="badges">
+    <span class="badge cat">Taxes</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">1-800-829-1040</span>
+  </div>
+  <p class="what">IRS Free File offers two no-cost ways to file federal returns: partner-provided guided tax software (free if you meet the year&#x27;s income limits) and Free File Fillable Forms (free electronic forms with no income limit, but no interview or advice). VITA (Volunteer Income Tax Assistance) and TCE add free, in-person returns prepared by IRS-certified volunteers.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves $150–$600 in paid tax prep for simple returns, plus the delay and penalties that mistakes trigger. Guided Free File software is free if you meet the income limit, VITA volunteers prepare and e-file for free in person, and refunds land faster when the return is accurate the first time.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Guided Free File has annual income caps and its deals do not cover every state return — always confirm this year&#x27;s limit on irs.gov.</li>
+    <li>Fillable Forms does no math for you and no state return.</li>
+    <li>VITA cannot prepare most complex returns (for example rental income or multi-state income) — check the site for the current list of in-scope forms.</li>
+    <li>IRS assistance is not legal advice, and it will not choose your best filing status for you over the phone.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>All W-2s and 1099s (wages, bank interest, retirement, unemployment)</li>
+    <li>Last year&#x27;s tax return (and prior-year AGI if it was your first filing)</li>
+    <li>Social Security or ITIN cards for everyone listed on the return</li>
+    <li>Bank routing and account numbers for a direct-deposit refund</li>
+    <li>Any 1095-A health form, 1098-T tuition form, or property tax statement, if they apply</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free" rel="noopener" data-host="www.irs.gov">IRS Free File — official free federal filing options</a> <small class="host-tag">(www.irs.gov)</small></li>
+    <li><a href="https://www.irs.gov/vita" rel="noopener" data-host="www.irs.gov">IRS VITA program overview (free in-person help)</a> <small class="host-tag">(www.irs.gov)</small></li>
+    <li><a href="https://irs.treasury.gov/freetaxprep" rel="noopener" data-host="irs.treasury.gov">Official VITA/TCE site locator</a> <small class="host-tag">(irs.treasury.gov)</small></li>
+  </ul></section>
+  <p class="phone">By phone: 1-800-829-1040 (IRS individual line — expect hold time)</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>Only irs.gov and irs.treasury.gov are official. Sites like &#x27;irs-refunds.com&#x27;, &#x27;e-file-irs.net&#x27;, or &#x27;myirs-portal.net&#x27; are impostors — and the IRS never emails or texts you about an unexpected refund. <em>Official:</em> <strong>irs.gov</strong></li>
+    <li>Paid sites clone the name &#x27;Free File&#x27;. The real program is only reached from irs.gov/freefile — if a site charges an &#x27;E-file service fee&#x27; for guided Free File, leave and start over from irs.gov. <em>Official:</em> <strong>irs.gov</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Guided Free File: free if your income is at or under the year&#x27;s cap published at irs.gov. Fillable Forms: any income. VITA: generally modest income, persons with disabilities, and limited-English speakers. January marks the start of each filing season.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2027-01-15.</p>
+</article>
+<article class="card" id="card-cfpb-complaint-portal" data-id="cfpb-complaint-portal" data-category="consumer" data-search="consumer &amp; money issues cfpb complaint tool — banks, credit, debt &amp; credit reports make a financial company answer you on the record, in writing — free. consumerfinance.gov is the consumer financial protection bureau&#x27;s official site. its complaint portal accepts complaints about banks, credit cards, collections, credit reporting, mortgages, loans, debt collection, and more — and sends your complaint to the company for a written response. ask cfpb on the same site answers hundreds of money questions in plain english. saves you writing a legal letter for the same result: filing a complaint typically puts the company on record to respond in writing (companies are expected to respond in 15 days, and to resolve complaints within 60), and the cfpb tracks repeat offenders you might otherwise fight alone. cannot force a refund, compensation, or a ruling for you — it is not a court. does not cover every kind of dispute; its scope is financial products and companies. does not give you legal advice or act as your attorney. an answer can take weeks; you will still need to keep your own records. company name and your account or loan number a short timeline with dates of what happened bills, letters, screenshots, and notes from calls one clear ask: refund, correct the credit report, stop the calls, or cancel the account the real tool is consumerfinance.gov and it is free. sites like &#x27;cfpb-refund-now.com&#x27;, &#x27;consumer-finance-help.net&#x27;, or &#x27;cfpb-complaints.com&#x27; that charge to &#x27;process your complaint&#x27; are fake. watch out for callers claiming &#x27;we found cfpb money owed to you&#x27; or asking a fee to fill this form. cfpb does not award individual payouts through private agents. 1-855-411-2372 (tty/tdd: 1-855-729-2372) free for everyone; complaints can be filed online or by phone, with interpreter support.">
+  <h2>CFPB complaint tool — banks, credit, debt &amp; credit reports</h2>
+  <p class="tagline">Make a financial company answer you on the record, in writing — free.</p>
+  <div class="badges">
+    <span class="badge cat">Consumer &amp; money issues</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">1-855-411-2372</span>
+  </div>
+  <p class="what">consumerfinance.gov is the Consumer Financial Protection Bureau&#x27;s official site. Its complaint portal accepts complaints about banks, credit cards, collections, credit reporting, mortgages, loans, debt collection, and more — and sends your complaint to the company for a written response. Ask CFPB on the same site answers hundreds of money questions in plain English.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves you writing a legal letter for the same result: filing a complaint typically puts the company on record to respond in writing (companies are expected to respond in 15 days, and to resolve complaints within 60), and the CFPB tracks repeat offenders you might otherwise fight alone.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Cannot force a refund, compensation, or a ruling for you — it is not a court.</li>
+    <li>Does not cover every kind of dispute; its scope is financial products and companies.</li>
+    <li>Does not give you legal advice or act as your attorney.</li>
+    <li>An answer can take weeks; you will still need to keep your own records.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>Company name and your account or loan number</li>
+    <li>A short timeline with dates of what happened</li>
+    <li>Bills, letters, screenshots, and notes from calls</li>
+    <li>One clear ask: refund, correct the credit report, stop the calls, or cancel the account</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://www.consumerfinance.gov/complaint/" rel="noopener" data-host="www.consumerfinance.gov">File a complaint with the CFPB (free)</a> <small class="host-tag">(www.consumerfinance.gov)</small></li>
+    <li><a href="https://www.consumerfinance.gov/ask-cfpb/" rel="noopener" data-host="www.consumerfinance.gov">Ask CFPB — plain-English money answers</a> <small class="host-tag">(www.consumerfinance.gov)</small></li>
+  </ul></section>
+  <p class="phone">By phone: 1-855-411-2372 (TTY/TDD: 1-855-729-2372)</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>The real tool is consumerfinance.gov and it is free. Sites like &#x27;cfpb-refund-now.com&#x27;, &#x27;consumer-finance-help.net&#x27;, or &#x27;cfpb-complaints.com&#x27; that charge to &#x27;process your complaint&#x27; are fake. <em>Official:</em> <strong>consumerfinance.gov</strong></li>
+    <li>Watch out for callers claiming &#x27;we found CFPB money owed to you&#x27; or asking a fee to fill this form. CFPB does not award individual payouts through private agents. <em>Official:</em> <strong>consumerfinance.gov</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Free for everyone; complaints can be filed online or by phone, with interpreter support.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2027-01-15.</p>
+</article>
+<article class="card" id="card-ftc-report-fraud" data-id="ftc-report-fraud" data-category="fraud" data-search="scams &amp; identity theft ftc fraud reporting + identity-theft recovery free federal reporting — plus an auto-built identity-theft recovery plan. reportfraud.ftc.gov is the federal trade commission&#x27;s official reporting site for scams and fraud; identitytheft.gov builds a personal, step-by-step recovery plan with ready-to-send letters and an official identity theft report; donotcall.gov registers your number and reports unwanted telemarketing. all free, all .gov. saves you the worst part of getting scammed: not knowing what to do next. your reports feed real ftc enforcement cases, and identitytheft.gov instantly writes a personal recovery plan with fillable letters to close fraudulent accounts, dispute charges, and reset credit — paperwork lenders and credit bureaus accept without argument. will not recover your lost money directly and will not investigate your single case as a personal detective. does not make the scammer stop calling or erase a scam after it happened — pair it with your state ag (see that card). the affidavit is not legal advice for unusual cases; complicated losses may still need a lawyer. everything the scammer saw or sent: phone numbers, emails, texts, screenshots receipts, card and app charges, and transfer records rough amounts lost or exposed (money, ssn, bank logins) for identitytheft.gov: your identity details for the official affidavit the double scam: paid &#x27;recovery agents&#x27; who say the ftc hired them to get your money back. the ftc never hires private agents, never promises returns, and never asks payment to file a report. lookalikes like &#x27;ftc-recovery.com&#x27;, &#x27;report-fraud-ftc.com&#x27;, or &#x27;identity-theft-gov.org&#x27; are fake. official sites end in .gov. 1-877-382-4357 (ftc consumer line); 1-877-438-4338 (id theft line) open to everyone, including reports about businesses in other states; anonymous reports are accepted, but a named report strengthens enforcement.">
+  <h2>FTC fraud reporting + identity-theft recovery</h2>
+  <p class="tagline">Free federal reporting — plus an auto-built identity-theft recovery plan.</p>
+  <div class="badges">
+    <span class="badge cat">Scams &amp; identity theft</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">1-877-382-4357</span>
+  </div>
+  <p class="what">reportfraud.ftc.gov is the Federal Trade Commission&#x27;s official reporting site for scams and fraud; identitytheft.gov builds a personal, step-by-step recovery plan with ready-to-send letters and an official Identity Theft Report; donotcall.gov registers your number and reports unwanted telemarketing. All free, all .gov.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves you the worst part of getting scammed: not knowing what to do next. Your reports feed real FTC enforcement cases, and identitytheft.gov instantly writes a personal recovery plan with fillable letters to close fraudulent accounts, dispute charges, and reset credit — paperwork lenders and credit bureaus accept without argument.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Will not recover your lost money directly and will not investigate your single case as a personal detective.</li>
+    <li>Does not make the scammer stop calling or erase a scam after it happened — pair it with your state AG (see that card).</li>
+    <li>The affidavit is not legal advice for unusual cases; complicated losses may still need a lawyer.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>Everything the scammer saw or sent: phone numbers, emails, texts, screenshots</li>
+    <li>Receipts, card and app charges, and transfer records</li>
+    <li>Rough amounts lost or exposed (money, SSN, bank logins)</li>
+    <li>For IdentityTheft.gov: your identity details for the official affidavit</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://reportfraud.ftc.gov/" rel="noopener" data-host="reportfraud.ftc.gov">Report fraud, scams, and bad business practices</a> <small class="host-tag">(reportfraud.ftc.gov)</small></li>
+    <li><a href="https://www.identitytheft.gov/" rel="noopener" data-host="www.identitytheft.gov">IdentityTheft.gov — free recovery plan and affidavit</a> <small class="host-tag">(www.identitytheft.gov)</small></li>
+    <li><a href="https://www.donotcall.gov/" rel="noopener" data-host="www.donotcall.gov">Register / report &#x27;do not call&#x27; violations</a> <small class="host-tag">(www.donotcall.gov)</small></li>
+  </ul></section>
+  <p class="phone">By phone: 1-877-382-4357 (FTC consumer line); 1-877-438-4338 (ID theft line)</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>The double scam: paid &#x27;recovery agents&#x27; who say the FTC hired them to get your money back. The FTC never hires private agents, never promises returns, and never asks payment to file a report. <em>Official:</em> <strong>ftc.gov</strong></li>
+    <li>Lookalikes like &#x27;ftc-recovery.com&#x27;, &#x27;report-fraud-ftc.com&#x27;, or &#x27;identity-theft-gov.org&#x27; are fake. Official sites end in .gov. <em>Official:</em> <strong>identitytheft.gov</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Open to everyone, including reports about businesses in other states; anonymous reports are accepted, but a named report strengthens enforcement.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2027-01-15.</p>
+</article>
+<article class="card" id="card-state-ag-consumer-help" data-id="state-ag-consumer-help" data-category="consumer" data-search="consumer &amp; money issues your state attorney general — free consumer help state-level complaint, mediation, and restitution help for local scams. each state&#x27;s attorney general office takes free consumer complaints and many mediate them, especially for locally licensed businesses: car lots, movers, contractors, home repairs, landlord-tenant issues, charities, and telemarketers. some states run restitution funds and publish, as court papers, the local list of sellers already sued. usa.gov&#x27;s official page points you to your real state contact. saves state-law fights from going silent: local contractors, car dealers, movers, and telemarketers answer state ag letters far more than small-claims threats, and some states have restitution funds that can return money otherwise unclaimed. filing a complaint is always free. services and legal powers differ state to state — some offices only log complaints. the ag office is not your lawyer and cannot represent you in court. no guarantee of a refund, restitution, or an investigation of your case alone. business name, address, and any contract or receipt a short timeline with dates copies — never your originals — of letters and screenshots one clear ask: refund, cancel, repair, or stop contact find your ag only through usa.gov. pay-to-file services like &#x27;state-ag-consumer-help.com&#x27; or &#x27;ag-consumer-complaint.net&#x27; are fake — filing with your ag is free. find your state&#x27;s number via the usa.gov page — never trust a number from a cold email open to everyone; offices prioritize new complaints and illegal patterns, so response time varies.">
+  <h2>Your state Attorney General — free consumer help</h2>
+  <p class="tagline">State-level complaint, mediation, and restitution help for local scams.</p>
+  <div class="badges">
+    <span class="badge cat">Consumer &amp; money issues</span>
+    <span class="badge free">Always free</span>
+    <span class="badge phone-badge">Find your state&#x27;s number via the USA.gov page — never trust a number from a cold email</span>
+  </div>
+  <p class="what">Each state&#x27;s Attorney General office takes free consumer complaints and many mediate them, especially for locally licensed businesses: car lots, movers, contractors, home repairs, landlord-tenant issues, charities, and telemarketers. Some states run restitution funds and publish, as court papers, the local list of sellers already sued. USA.gov&#x27;s official page points you to your real state contact.</p>
+  <section><h3>Saves you</h3>
+    <p>Saves state-law fights from going silent: local contractors, car dealers, movers, and telemarketers answer state AG letters far more than small-claims threats, and some states have restitution funds that can return money otherwise unclaimed. Filing a complaint is always free.</p>
+  </section>
+  <section><h3>What it cannot do</h3><ul>
+    <li>Services and legal powers differ state to state — some offices only log complaints.</li>
+    <li>The AG office is not your lawyer and cannot represent you in court.</li>
+    <li>No guarantee of a refund, restitution, or an investigation of your case alone.</li>
+  </ul></section>
+  <section><h3>Have ready</h3><ul>
+    <li>Business name, address, and any contract or receipt</li>
+    <li>A short timeline with dates</li>
+    <li>Copies — never your originals — of letters and screenshots</li>
+    <li>One clear ask: refund, cancel, repair, or stop contact</li>
+  </ul></section>
+  <section><h3>Official, free portals</h3><ul class="links">
+    <li><a href="https://www.usa.gov/state-consumer" rel="noopener" data-host="www.usa.gov">USA.gov — find your state consumer protection office</a> <small class="host-tag">(www.usa.gov)</small></li>
+  </ul></section>
+  <p class="phone">By phone: Find your state&#x27;s number via the USA.gov page — never trust a number from a cold email</p>
+  <section class="scams"><h3>Spot the fakes</h3><ul>
+    <li>Find your AG only through USA.gov. Pay-to-file services like &#x27;state-ag-consumer-help.com&#x27; or &#x27;ag-consumer-complaint.net&#x27; are fake — filing with your AG is free. <em>Official:</em> <strong>usa.gov</strong></li>
+  </ul></section>
+  <p class="notes">Good to know: Open to everyone; offices prioritize new complaints and illegal patterns, so response time varies.</p>
+  <p class="recheck">Verified free on 2026-10-26 &middot; recheck by 2027-01-15.</p>
+</article>
+  </section>
+</main>
+
+<footer class="site-foot wrap">
+  <p><strong>About this page.</strong> An unofficial, independent directory — not affiliated with any government agency or United Way. Every listing is vetted to be officially free before it earns a card here.</p>
+  <p class="fine">Unofficial, independent guide. Not affiliated with, endorsed by, or speaking for any government agency or United Way. This page never earns money from the links it lists: no affiliate links, ever. It is general information, not legal, tax, or medical advice.</p>
+  <p class="fine">Data updated 2026-10-26 &middot; HTML last rebuilt 2026-10-26. Maintained by Asdale Dynamics, LLC under the MIT License.</p>
+</footer>
+
+<script type="application/json" id="resources-data">{
+  "schema_version": 1,
+  "page": {
+    "title": "Official Free Help Directory",
+    "updated": "2026-10-26",
+    "intro": "A plain-English directory of services that are officially free, run by government or by trusted nonprofits, and never sell you anything. Every card tells you what it saves you, what it cannot do, what to have ready, and how to spot fake lookalike websites before you share personal details.",
+    "disclaimer": "Unofficial, independent guide. Not affiliated with, endorsed by, or speaking for any government agency or United Way. This page never earns money from the links it lists: no affiliate links, ever. It is general information, not legal, tax, or medical advice."
+  },
+  "categories": [
+    {
+      "id": "benefits",
+      "label": "Benefits \u0026 health coverage"
+    },
+    {
+      "id": "taxes",
+      "label": "Taxes"
+    },
+    {
+      "id": "consumer",
+      "label": "Consumer \u0026 money issues"
+    },
+    {
+      "id": "fraud",
+      "label": "Scams \u0026 identity theft"
+    },
+    {
+      "id": "local-help",
+      "label": "Local help \u0026 referrals"
+    }
+  ],
+  "resources": [
+    {
+      "id": "ssa-my-social-security",
+      "category": "benefits",
+      "title": "Social Security (SSA) — official, always-free service",
+      "tagline": "File claims, replace cards, get benefit letters: no agent, no fee, ever.",
+      "what_it_is": "ssa.gov is the federal Social Security Administration's official site. With a free 'my Social Security' account you can apply for retirement or disability benefits, request a replacement SSN card, download a benefit verification letter, and manage direct deposit yourself — the same work some private 'agents' charge hundreds of dollars for.",
+      "official_urls": [
+        {
+          "label": "Apply for benefits (official SSA)",
+          "url": "https://www.ssa.gov/apply"
+        },
+        {
+          "label": "Create a free my Social Security account",
+          "url": "https://www.ssa.gov/myaccount/"
+        }
+      ],
+      "allowed_hosts": [
+        "ssa.gov"
+      ],
+      "phone": "1-800-772-1213 (TTY 1-800-325-0778), Mon–Fri",
+      "saves_you": "Saves you from paid middlemen who charge $200–$1,000+ to do what SSA does for free: filing for retirement, Medicare, or disability; replacing a lost card; and printing the benefit letter landlords and agencies ask for. A lawyer is never required just to apply.",
+      "cannot_do": [
+        "Cannot guarantee approval — eligibility rules decide, not customer service.",
+        "Cannot speed up complex disability decisions beyond normal processing times.",
+        "Does not give legal advice; a difficult appeal may still be worth discussing with an independent attorney (SSA regulates attorney and non-attorney representative fees).",
+        "Some claims (for example certain survivor cases) still finish by phone or office appointment, not fully online."
+      ],
+      "have_ready": [
+        "Social Security number — and your card, if you have it",
+        "Birth certificate or other proof of date of birth",
+        "Latest W-2, or last year's tax return if self-employed",
+        "Bank routing and account number for direct deposit",
+        "Military records or marriage/divorce papers, if they apply to you"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2026-12-30",
+      "scam_warnings": [
+        {
+          "watch_out": "Never pay a 'fee' to release Social Security benefits or to unfreeze your number. Calls and texts demanding gift cards, wire transfers, or crypto are fake — hang up.",
+          "safe_domain": "ssa.gov"
+        },
+        {
+          "watch_out": "Lookalike sites like 'ssa-gov.com', 'socialsecurity-now.com', or 'myssa-refund.net' are impostors. The real site is www.ssa.gov — type it yourself.",
+          "safe_domain": "ssa.gov"
+        }
+      ],
+      "eligibility_notes": "Free for everyone. Some online services ask you to verify your identity when creating a my Social Security account."
+    },
+    {
+      "id": "medicare-ship-counselors",
+      "category": "benefits",
+      "title": "Medicare plan help — Medicare.gov counselors \u0026 SHIP",
+      "tagline": "Free, unbiased state counseling before you pick or switch a Medicare plan.",
+      "what_it_is": "Medicare.gov is the official federal Medicare site, and SHIP (State Health Insurance Assistance Program) is a national network of state-funded counselors. Counselors compare plans with you one-on-one, review your drugs against plan formularies, explain bills, and coach you through enrollment — they sell nothing and take no commission.",
+      "official_urls": [
+        {
+          "label": "Official Medicare site (Plan Compare, coverage basics)",
+          "url": "https://www.medicare.gov/"
+        },
+        {
+          "label": "Find your state SHIP counselor (official directory)",
+          "url": "https://www.shiphelp.org/"
+        },
+        {
+          "label": "Eldercare Locator — state SHIP phone numbers",
+          "url": "https://eldercare.acl.gov/"
+        }
+      ],
+      "allowed_hosts": [
+        "medicare.gov",
+        "shiphelp.org",
+        "eldercare.acl.gov"
+      ],
+      "phone": "1-800-633-4227 (1-800-MEDICARE), TTY 1-800-325-0778",
+      "saves_you": "Saves you $150–$500 a year in paid 'Medicare advisor' fees and the bigger cost of enrolling in a plan sold on commission. SHIP counselors are state-funded volunteers and staff who take no commission, so their plan comparison doesn't lean toward anyone's paycheck — including honest reviews of your medications each fall.",
+      "cannot_do": [
+        "Cannot enroll you or file forms for you — they coach, you click the button.",
+        "Cannot sell plans or accept any commission (they are required to stay unbiased and unsold).",
+        "Does not provide legal advice for benefit denials or lawsuits.",
+        "Wait times spike during fall open enrollment (Oct 15 – Dec 7); appointments can run weeks behind."
+      ],
+      "have_ready": [
+        "Your Medicare card (number is 11 letters and digits, your MBI)",
+        "Complete list of current medications with doses",
+        "Any plan papers, bills, or denial letters",
+        "Your ZIP code so the locator finds your state SHIP office"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2026-12-30",
+      "scam_warnings": [
+        {
+          "watch_out": "Official Medicare never cold-calls to offer gift cards, groceries, or 'free groceries with a new plan'. Robocalls saying 'switch now to keep benefits' are fake.",
+          "safe_domain": "medicare.gov"
+        },
+        {
+          "watch_out": "Lookalikes like 'medicare-gov.info', 'medicare-plans-us.com', or 'ship-counselor.net' are impostors. Official domains end in .gov — or are shiphelp.org for SHIP.",
+          "safe_domain": "medicare.gov"
+        }
+      ],
+      "eligibility_notes": "Medicare.gov: everyone. SHIP: people with Medicare and their families — free regardless of income. Open enrollment runs Oct 15 – Dec 7 each year."
+    },
+    {
+      "id": "united-way-211",
+      "category": "local-help",
+      "title": "211 — free local help line (United Way)",
+      "tagline": "One free call or text maps you to rent, food, utility, and care programs.",
+      "what_it_is": "211 is a free, 24/7 help line in most U.S. states, powered by local United Way and partner organizations. Tell the specialist what you need — rent or utility help, food, transportation, child care, support for older adults or a disability — and they list the local programs that can help and how to apply.",
+      "official_urls": [
+        {
+          "label": "211.org — find your local 211",
+          "url": "https://www.211.org/"
+        }
+      ],
+      "allowed_hosts": [
+        "211.org"
+      ],
+      "phone": "Dial or text 2-1-1 (24/7 in most areas; some areas use a toll-free number)",
+      "saves_you": "Saves hours of searching for rent aid, food pantries, utility shut-off help, transportation, and home care — one call gives you a local, current list with eligibility rules instead of a maze of dead ends. Cost: free, always.",
+      "cannot_do": [
+        "Does not hand out money itself — it refers you to programs; screening is done by each program.",
+        "Coverage and quality vary by county; a few rural areas have limited 2-1-1 service.",
+        "It is not 911 — it cannot send police, an ambulance, or stop an eviction in progress after hours."
+      ],
+      "have_ready": [
+        "Your ZIP code",
+        "A one-sentence description of what you need today",
+        "Any deadline you already know (eviction notice date, shut-off notice date)"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2026-12-30",
+      "scam_warnings": [
+        {
+          "watch_out": "Real 211 never asks you to pay, give a gift card, or apply for a 'federal grant' — calls and ads promising guaranteed grants for a fee are fake.",
+          "safe_domain": "211.org"
+        },
+        {
+          "watch_out": "Scammers spoof short numbers and make sites like '211-benefits-grants.com'. The official site is 211.org (run by United Way Worldwide); verify the number before calling back.",
+          "safe_domain": "211.org"
+        }
+      ],
+      "eligibility_notes": "Open to everyone; an automated option and interpreter services are available in many areas."
+    },
+    {
+      "id": "irs-free-file-vita",
+      "category": "taxes",
+      "title": "IRS free tax filing + VITA volunteer preparers",
+      "tagline": "File federal taxes free with guided software or trained volunteers.",
+      "what_it_is": "IRS Free File offers two no-cost ways to file federal returns: partner-provided guided tax software (free if you meet the year's income limits) and Free File Fillable Forms (free electronic forms with no income limit, but no interview or advice). VITA (Volunteer Income Tax Assistance) and TCE add free, in-person returns prepared by IRS-certified volunteers.",
+      "official_urls": [
+        {
+          "label": "IRS Free File — official free federal filing options",
+          "url": "https://www.irs.gov/filing/irs-free-file-do-your-taxes-for-free"
+        },
+        {
+          "label": "IRS VITA program overview (free in-person help)",
+          "url": "https://www.irs.gov/vita"
+        },
+        {
+          "label": "Official VITA/TCE site locator",
+          "url": "https://irs.treasury.gov/freetaxprep"
+        }
+      ],
+      "allowed_hosts": [
+        "irs.gov",
+        "irs.treasury.gov"
+      ],
+      "phone": "1-800-829-1040 (IRS individual line — expect hold time)",
+      "saves_you": "Saves $150–$600 in paid tax prep for simple returns, plus the delay and penalties that mistakes trigger. Guided Free File software is free if you meet the income limit, VITA volunteers prepare and e-file for free in person, and refunds land faster when the return is accurate the first time.",
+      "cannot_do": [
+        "Guided Free File has annual income caps and its deals do not cover every state return — always confirm this year's limit on irs.gov.",
+        "Fillable Forms does no math for you and no state return.",
+        "VITA cannot prepare most complex returns (for example rental income or multi-state income) — check the site for the current list of in-scope forms.",
+        "IRS assistance is not legal advice, and it will not choose your best filing status for you over the phone."
+      ],
+      "have_ready": [
+        "All W-2s and 1099s (wages, bank interest, retirement, unemployment)",
+        "Last year's tax return (and prior-year AGI if it was your first filing)",
+        "Social Security or ITIN cards for everyone listed on the return",
+        "Bank routing and account numbers for a direct-deposit refund",
+        "Any 1095-A health form, 1098-T tuition form, or property tax statement, if they apply"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2027-01-15",
+      "scam_warnings": [
+        {
+          "watch_out": "Only irs.gov and irs.treasury.gov are official. Sites like 'irs-refunds.com', 'e-file-irs.net', or 'myirs-portal.net' are impostors — and the IRS never emails or texts you about an unexpected refund.",
+          "safe_domain": "irs.gov"
+        },
+        {
+          "watch_out": "Paid sites clone the name 'Free File'. The real program is only reached from irs.gov/freefile — if a site charges an 'E-file service fee' for guided Free File, leave and start over from irs.gov.",
+          "safe_domain": "irs.gov"
+        }
+      ],
+      "eligibility_notes": "Guided Free File: free if your income is at or under the year's cap published at irs.gov. Fillable Forms: any income. VITA: generally modest income, persons with disabilities, and limited-English speakers. January marks the start of each filing season."
+    },
+    {
+      "id": "cfpb-complaint-portal",
+      "category": "consumer",
+      "title": "CFPB complaint tool — banks, credit, debt \u0026 credit reports",
+      "tagline": "Make a financial company answer you on the record, in writing — free.",
+      "what_it_is": "consumerfinance.gov is the Consumer Financial Protection Bureau's official site. Its complaint portal accepts complaints about banks, credit cards, collections, credit reporting, mortgages, loans, debt collection, and more — and sends your complaint to the company for a written response. Ask CFPB on the same site answers hundreds of money questions in plain English.",
+      "official_urls": [
+        {
+          "label": "File a complaint with the CFPB (free)",
+          "url": "https://www.consumerfinance.gov/complaint/"
+        },
+        {
+          "label": "Ask CFPB — plain-English money answers",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/"
+        }
+      ],
+      "allowed_hosts": [
+        "consumerfinance.gov"
+      ],
+      "phone": "1-855-411-2372 (TTY/TDD: 1-855-729-2372)",
+      "saves_you": "Saves you writing a legal letter for the same result: filing a complaint typically puts the company on record to respond in writing (companies are expected to respond in 15 days, and to resolve complaints within 60), and the CFPB tracks repeat offenders you might otherwise fight alone.",
+      "cannot_do": [
+        "Cannot force a refund, compensation, or a ruling for you — it is not a court.",
+        "Does not cover every kind of dispute; its scope is financial products and companies.",
+        "Does not give you legal advice or act as your attorney.",
+        "An answer can take weeks; you will still need to keep your own records."
+      ],
+      "have_ready": [
+        "Company name and your account or loan number",
+        "A short timeline with dates of what happened",
+        "Bills, letters, screenshots, and notes from calls",
+        "One clear ask: refund, correct the credit report, stop the calls, or cancel the account"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2027-01-15",
+      "scam_warnings": [
+        {
+          "watch_out": "The real tool is consumerfinance.gov and it is free. Sites like 'cfpb-refund-now.com', 'consumer-finance-help.net', or 'cfpb-complaints.com' that charge to 'process your complaint' are fake.",
+          "safe_domain": "consumerfinance.gov"
+        },
+        {
+          "watch_out": "Watch out for callers claiming 'we found CFPB money owed to you' or asking a fee to fill this form. CFPB does not award individual payouts through private agents.",
+          "safe_domain": "consumerfinance.gov"
+        }
+      ],
+      "eligibility_notes": "Free for everyone; complaints can be filed online or by phone, with interpreter support."
+    },
+    {
+      "id": "ftc-report-fraud",
+      "category": "fraud",
+      "title": "FTC fraud reporting + identity-theft recovery",
+      "tagline": "Free federal reporting — plus an auto-built identity-theft recovery plan.",
+      "what_it_is": "reportfraud.ftc.gov is the Federal Trade Commission's official reporting site for scams and fraud; identitytheft.gov builds a personal, step-by-step recovery plan with ready-to-send letters and an official Identity Theft Report; donotcall.gov registers your number and reports unwanted telemarketing. All free, all .gov.",
+      "official_urls": [
+        {
+          "label": "Report fraud, scams, and bad business practices",
+          "url": "https://reportfraud.ftc.gov/"
+        },
+        {
+          "label": "IdentityTheft.gov — free recovery plan and affidavit",
+          "url": "https://www.identitytheft.gov/"
+        },
+        {
+          "label": "Register / report 'do not call' violations",
+          "url": "https://www.donotcall.gov/"
+        }
+      ],
+      "allowed_hosts": [
+        "reportfraud.ftc.gov",
+        "identitytheft.gov",
+        "donotcall.gov",
+        "ftc.gov",
+        "consumer.gov"
+      ],
+      "phone": "1-877-382-4357 (FTC consumer line); 1-877-438-4338 (ID theft line)",
+      "saves_you": "Saves you the worst part of getting scammed: not knowing what to do next. Your reports feed real FTC enforcement cases, and identitytheft.gov instantly writes a personal recovery plan with fillable letters to close fraudulent accounts, dispute charges, and reset credit — paperwork lenders and credit bureaus accept without argument.",
+      "cannot_do": [
+        "Will not recover your lost money directly and will not investigate your single case as a personal detective.",
+        "Does not make the scammer stop calling or erase a scam after it happened — pair it with your state AG (see that card).",
+        "The affidavit is not legal advice for unusual cases; complicated losses may still need a lawyer."
+      ],
+      "have_ready": [
+        "Everything the scammer saw or sent: phone numbers, emails, texts, screenshots",
+        "Receipts, card and app charges, and transfer records",
+        "Rough amounts lost or exposed (money, SSN, bank logins)",
+        "For IdentityTheft.gov: your identity details for the official affidavit"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2027-01-15",
+      "scam_warnings": [
+        {
+          "watch_out": "The double scam: paid 'recovery agents' who say the FTC hired them to get your money back. The FTC never hires private agents, never promises returns, and never asks payment to file a report.",
+          "safe_domain": "ftc.gov"
+        },
+        {
+          "watch_out": "Lookalikes like 'ftc-recovery.com', 'report-fraud-ftc.com', or 'identity-theft-gov.org' are fake. Official sites end in .gov.",
+          "safe_domain": "identitytheft.gov"
+        }
+      ],
+      "eligibility_notes": "Open to everyone, including reports about businesses in other states; anonymous reports are accepted, but a named report strengthens enforcement."
+    },
+    {
+      "id": "state-ag-consumer-help",
+      "category": "consumer",
+      "title": "Your state Attorney General — free consumer help",
+      "tagline": "State-level complaint, mediation, and restitution help for local scams.",
+      "what_it_is": "Each state's Attorney General office takes free consumer complaints and many mediate them, especially for locally licensed businesses: car lots, movers, contractors, home repairs, landlord-tenant issues, charities, and telemarketers. Some states run restitution funds and publish, as court papers, the local list of sellers already sued. USA.gov's official page points you to your real state contact.",
+      "official_urls": [
+        {
+          "label": "USA.gov — find your state consumer protection office",
+          "url": "https://www.usa.gov/state-consumer"
+        }
+      ],
+      "allowed_hosts": [
+        "usa.gov"
+      ],
+      "phone": "Find your state's number via the USA.gov page — never trust a number from a cold email",
+      "saves_you": "Saves state-law fights from going silent: local contractors, car dealers, movers, and telemarketers answer state AG letters far more than small-claims threats, and some states have restitution funds that can return money otherwise unclaimed. Filing a complaint is always free.",
+      "cannot_do": [
+        "Services and legal powers differ state to state — some offices only log complaints.",
+        "The AG office is not your lawyer and cannot represent you in court.",
+        "No guarantee of a refund, restitution, or an investigation of your case alone."
+      ],
+      "have_ready": [
+        "Business name, address, and any contract or receipt",
+        "A short timeline with dates",
+        "Copies — never your originals — of letters and screenshots",
+        "One clear ask: refund, cancel, repair, or stop contact"
+      ],
+      "verified_free_on": "2026-10-26",
+      "recheck_by": "2027-01-15",
+      "scam_warnings": [
+        {
+          "watch_out": "Find your AG only through USA.gov. Pay-to-file services like 'state-ag-consumer-help.com' or 'ag-consumer-complaint.net' are fake — filing with your AG is free.",
+          "safe_domain": "usa.gov"
+        }
+      ],
+      "eligibility_notes": "Open to everyone; offices prioritize new complaints and illegal patterns, so response time varies."
+    }
+  ]
+}</script>
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var search = document.getElementById("search");
+  var chipsBox = document.getElementById("chips");
+  var count = document.getElementById("count");
+  var clear = document.getElementById("clear");
+  var cards = Array.prototype.slice.call(document.querySelectorAll("article.card"));
+  var total = cards.length;
+  var activeCat = "all";
+
+  var dataEl = document.getElementById("resources-data");
+  var dataset = {};
+  try { dataset = JSON.parse(dataEl.textContent); } catch (err) { dataset = { resources: [] }; }
+  var today = new Date().toISOString().slice(0, 10);
+
+  (dataset.resources || []).forEach(function (r) {
+    var cardEl = document.getElementById("card-" + r.id);
+    if (!cardEl || !r.recheck_by) return;
+    if (r.recheck_by < today) {
+      var badge = document.createElement("span");
+      badge.className = "badge warn";
+      badge.textContent = "Recheck overdue — free status not re-confirmed since " + r.recheck_by;
+      var titles = cardEl.querySelector(".badges");
+      if (titles) titles.appendChild(badge);
+    } else {
+      var b2 = document.createElement("span");
+      b2.className = "badge";
+      b2.textContent = "Recheck by " + r.recheck_by;
+      var t2 = cardEl.querySelector(".badges");
+      if (t2) t2.appendChild(b2);
+    }
+  });
+
+  function makeChip(id, label) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip";
+    b.textContent = label;
+    b.dataset.category = id;
+    b.setAttribute("aria-pressed", id === activeCat ? "true" : "false");
+    b.addEventListener("click", function () {
+      activeCat = id;
+      Array.prototype.forEach.call(chipsBox.children, function (c) {
+        c.setAttribute("aria-pressed", c.dataset.category === activeCat ? "true" : "false");
+      });
+      apply();
+    });
+    chipsBox.appendChild(b);
+  }
+  function bindChip(btn) {
+    btn.addEventListener("click", function () {
+      activeCat = btn.dataset.category;
+      Array.prototype.forEach.call(chipsBox.querySelectorAll("button.chip"), function (c) {
+        c.setAttribute("aria-pressed", c.dataset.category === activeCat ? "true" : "false");
+      });
+      apply();
+    });
+  }
+  var existingChips = chipsBox.querySelectorAll("button.chip");
+  if (existingChips.length === 0) { makeChip("all", "All"); bindChip(chipsBox.lastChild); }
+  Array.prototype.forEach.call(existingChips, bindChip);
+
+  function apply() {
+    var q = (search.value || "").trim().toLowerCase();
+    var terms = q ? q.split(/\s+/) : [];
+    var shown = 0;
+    cards.forEach(function (card) {
+      var okCat = activeCat === "all" || card.dataset.category === activeCat;
+      var hay = card.dataset.search || "";
+      var okQ = true;
+      for (var i = 0; i < terms.length; i++) {
+        if (hay.indexOf(terms[i]) === -1) { okQ = false; break; }
+      }
+      var ok = okCat && okQ;
+      if (ok) { card.hidden = false; shown++; } else { card.hidden = true; }
+    });
+    count.textContent = shown === total
+      ? "Showing all " + total + " resources."
+      : "Showing " + shown + " of " + total + " resources.";
+  }
+
+  search.addEventListener("input", apply);
+  clear.addEventListener("click", function () {
+    search.value = "";
+    activeCat = "all";
+    Array.prototype.forEach.call(chipsBox.children, function (c) {
+      c.setAttribute("aria-pressed", c.dataset.category === "all" ? "true" : "false");
+    });
+    apply();
+    search.focus();
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>
